@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id=":joke-provider" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="udacity-android-project4" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":java-jokes" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="udacity-android-project4" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
-        <option name="GRADLE_PROJECT_PATH" value=":joke-provider" />
+        <option name="GRADLE_PROJECT_PATH" value=":java-jokes" />
       </configuration>
     </facet>
     <facet type="java-gradle" name="Java-Gradle">
@@ -28,6 +28,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="commons-lang3-3.4" level="project" />
-    <orderEntry type="library" exported="" name="joke-provider.joke-provider" level="project" />
+    <orderEntry type="library" exported="" name="java-jokes.java-jokes" level="project" />
   </component>
 </module>
