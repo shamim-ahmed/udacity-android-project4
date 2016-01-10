@@ -40,7 +40,7 @@ public class JokeProvider {
         loadJokes();
     }
 
-    public static void loadJokes() {
+    private synchronized static void loadJokes() {
         // this statement was included to get rid of a warning message. For details, please see
         // stackoverflow.com/questions/13407006/android-class-loader-may-fail-for-processes-that-host-multiple-applications
         Thread.currentThread().setContextClassLoader(JokeProvider.class.getClassLoader());
