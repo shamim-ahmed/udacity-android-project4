@@ -6,27 +6,27 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Joke implements Comparable<Joke> {
     private final Long id;
-    private final String text;
+    private final String content;
 
-    public Joke(Long id, String text) {
+    public Joke(Long id, String content) {
         if (id == null) {
             throw new IllegalArgumentException("Joke id cannot be null");
         }
 
-        if (StringUtils.isBlank(text)) {
-            throw new IllegalArgumentException("Joke text cannot be blank");
+        if (StringUtils.isBlank(content)) {
+            throw new IllegalArgumentException("Joke content cannot be blank");
         }
 
         this.id = id;
-        this.text = text;
+        this.content = content;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getText() {
-        return text;
+    public String getContent() {
+        return content;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Joke implements Comparable<Joke> {
         }
 
         Joke otherJoke = (Joke) obj;
-        return id.equals(otherJoke.id) && text.equals(otherJoke.text);
+        return id.equals(otherJoke.id) && content.equals(otherJoke.content);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class Joke implements Comparable<Joke> {
     @Override
     public String toString() {
         ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE);
-        builder.append("id", id).append("text", text);
+        builder.append("id", id).append("content", content);
 
         return builder.toString();
     }

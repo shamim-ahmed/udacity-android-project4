@@ -47,6 +47,6 @@ public class MainActivity extends ActionBarActivity {
     public void tellJoke(View view){
         Joke joke = JokeProvider.getJoke();
         Log.i(TAG, String.format("The retrieved joke is : %s", joke));
-        Toast.makeText(this, joke.getText(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, joke.getContent(), Toast.LENGTH_LONG).show();
     }
 }
