@@ -2,6 +2,7 @@ package com.udacity.gradle.builditbigger;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,7 @@ import edu.udacity.provider.jokes.JokeProvider;
 
 
 public class MainActivity extends ActionBarActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void tellJoke(View view){
         Joke joke = JokeProvider.getJoke();
+        Log.i(TAG, String.format("The retrieved joke is : %s", joke));
         Toast.makeText(this, joke.getText(), Toast.LENGTH_LONG).show();
-
     }
 }

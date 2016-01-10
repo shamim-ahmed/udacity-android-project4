@@ -41,6 +41,10 @@ public class JokeProvider {
     }
 
     public static void loadJokes() {
+        // this statement was included to get rid of a warning message. For details, please see
+        // stackoverflow.com/questions/13407006/android-class-loader-may-fail-for-processes-that-host-multiple-applications
+        Thread.currentThread().setContextClassLoader(JokeProvider.class.getClassLoader());
+
         InputStream inputStream = null;
 
         try {
@@ -74,7 +78,7 @@ public class JokeProvider {
                             LOGGER.log(Level.WARNING, String.format("invalid value %s found for id", idStr));
                         } else {
                             Long id = Long.valueOf(idStr);
-                            Joke joke = new Joke(id, text);
+                            Joke joke = new Joke(id, text.trim());
                             jokeList.add(joke);
                             LOGGER.log(Level.INFO, String.format("Loaded joke with id %s", idStr));
                         }
