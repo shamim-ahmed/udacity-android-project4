@@ -77,6 +77,7 @@ public class JokeProvider {
                         } else if (StringUtils.isBlank(text)) {
                             LOGGER.log(Level.WARNING, String.format("invalid value %s found for id", idStr));
                         } else {
+                            text = text.trim().replaceAll("\\p{javaSpaceChar}{2,}", " ");
                             Long id = Long.valueOf(idStr);
                             Joke joke = new Joke(id, text.trim());
                             jokeList.add(joke);
