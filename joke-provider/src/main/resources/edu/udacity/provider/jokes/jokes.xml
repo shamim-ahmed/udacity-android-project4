@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jokes>
+    <joke>
+        <id>1</id>
+        <content>Did you hear about the blind carpenter who picked up his hammer and saw?</content>
+    </joke>
+    <joke>
+        <id>2</id>
+        <content>Did you hear about the deaf shepherd who gathered his flock and heard (herd)?</content>
+    </joke>
+    <joke>
+        <id>3</id>
+        <content>
+            A teacher is talking to a student.
+            Teacher: Did your father help you with your homework?
+            Student: No, he did it all by himself.
+        </content>
+    </joke>
+    <joke>
+        <id>4</id>
+        <content>
+            A: "I was born in California."
+            B: "Which part?"
+            A: "All of me."
+        </content>
+    </joke>
+    <joke>
+        <id>5</id>
+        <content>
+            A man was complaining to a railroad engineer.
+            Man: What's the use of having a train schedule if the trains are always late.
+            Engineer: How would we know they were late, if we didn't have a schedule?
+        </content>
+    </joke>
+    <joke>
+        <id>6</id>
+        <content>
+            A: "Excuse me. Do you know the way to the zoo?"
+            B: "No, I'm sorry I don't."
+            A: "Well, it's two blocks this way, then one block to the left."
+        </content>
+    </joke>
+</jokes>
