@@ -127,5 +127,6 @@
     <orderEntry type="library" exported="" name="play-services-games-7.3.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-identity-7.3.0" level="project" />
     <orderEntry type="module" module-name="java-jokes" exported="" />
+    <orderEntry type="module" module-name="android-joke-activities" exported="" />
   </component>
 </module>
