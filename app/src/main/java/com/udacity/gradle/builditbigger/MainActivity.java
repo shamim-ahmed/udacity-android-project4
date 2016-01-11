@@ -9,8 +9,6 @@ import android.view.View;
 import com.udacity.gradle.builditbigger.tasks.FetchJokeTask;
 
 public class MainActivity extends ActionBarActivity {
-    private static final String JOKE_CONTENT_ATTR_NAME = "jokeContent";
-    private static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

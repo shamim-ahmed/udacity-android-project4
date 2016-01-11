@@ -10,8 +10,8 @@ import edu.udacity.model.Joke;
 import edu.udacity.provider.jokes.JokeProvider;
 
 public class FetchJokeTask extends AsyncTask<String, Void, String> {
-    private static final String JOKE_CONTENT_ATTR_NAME = "jokeContent";
     private static final String TAG = FetchJokeTask.class.getSimpleName();
+    private static final String JOKE_CONTENT_ATTR_NAME = "jokeContent";
 
     private final Context context;
 
