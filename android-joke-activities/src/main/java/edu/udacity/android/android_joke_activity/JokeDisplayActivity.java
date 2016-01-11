@@ -4,13 +4,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class JokeDisplayActivity extends AppCompatActivity {
+
+    private static final String JOKE_CONTENT_ATTR_NAME = "jokeContent";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joke_display);
+
+        String jokeContent = getIntent().getStringExtra(JOKE_CONTENT_ATTR_NAME);
+
+        if (jokeContent != null) {
+            TextView view = (TextView) findViewById(R.id.joke_content);
+            view.setText(jokeContent);
+        }
     }
 
     @Override
