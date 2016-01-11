@@ -1,18 +1,12 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import edu.udacity.android.android_joke_activity.JokeDisplayActivity;
-import edu.udacity.model.Joke;
-import edu.udacity.provider.jokes.JokeProvider;
-
+import com.udacity.gradle.builditbigger.tasks.FetchJokeTask;
 
 public class MainActivity extends ActionBarActivity {
     private static final String JOKE_CONTENT_ATTR_NAME = "jokeContent";
@@ -48,11 +42,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        Joke joke = JokeProvider.getJoke();
-        Log.i(TAG, String.format("The retrieved joke is : %s", joke));
-
-        Intent intent = new Intent(this, JokeDisplayActivity.class);
-        intent.putExtra(JOKE_CONTENT_ATTR_NAME, joke.getContent());
-        startActivity(intent);
+        FetchJokeTask task = new FetchJokeTask(this);
+        task.execute();
     }
 }
