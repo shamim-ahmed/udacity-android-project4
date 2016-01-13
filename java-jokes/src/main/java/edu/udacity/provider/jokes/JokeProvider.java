@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,8 +33,9 @@ public class JokeProvider {
     private static final String JOKE_XPATH_EXPR = "/jokes/joke";
     private static final String ID_XPATH_EXPR = "id/text()";
     private static final String CONTENT_XPATH_EXPR = "content/text()";
-
     private static final String JOKE_TAG_NAME = "joke";
+    
+    private static final Random RANDOM_GENERATOR = new Random();
 
     static {
         loadJokes();
@@ -101,8 +102,7 @@ public class JokeProvider {
         final int n = jokeList.size();
 
         if (n > 0) {
-            ThreadLocalRandom randomGenerator = ThreadLocalRandom.current();
-            int idx = randomGenerator.nextInt(n);
+            int idx = RANDOM_GENERATOR.nextInt(n);
             joke = jokeList.get(idx);
         }
 
