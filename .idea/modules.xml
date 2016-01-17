@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android-joke-activities/android-joke-activities.iml" filepath="$PROJECT_DIR$/android-joke-activities/android-joke-activities.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gcm-jokes/gcm-jokes.iml" filepath="$PROJECT_DIR$/gcm-jokes/gcm-jokes.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-jokes/java-jokes.iml" filepath="$PROJECT_DIR$/java-jokes/java-jokes.iml" />
       <module fileurl="file://$PROJECT_DIR$/udacity-android-project4.iml" filepath="$PROJECT_DIR$/udacity-android-project4.iml" />
     </modules>

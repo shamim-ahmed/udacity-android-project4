@@ -26,9 +26,13 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:22.1.1'
     // Added for AdMob
-    compile 'com.google.android.gms:play-services:7.3.0'
     compile project(':java-jokes')
     compile project(':android-joke-activities')
+    compile project(path: ':gcm-jokes', configuration: 'android-endpoints')
+    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.google.android.gms:play-services:7.8.0'
+    compile 'com.google.android.gms:play-services-ads:7.8.0'
+    compile 'com.google.android.gms:play-services-identity:7.8.0'
+    compile 'com.google.android.gms:play-services-gcm:7.8.0'
 }
