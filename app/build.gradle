@@ -10,6 +10,7 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -27,6 +28,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     // Added for AdMob
+    compile 'com.android.support:multidex:1.0.0'
     compile project(':java-jokes')
     compile project(':android-joke-activities')
     compile project(path: ':gcm-jokes', configuration: 'android-endpoints')
