@@ -14,7 +14,7 @@ import javax.inject.Named;
 
 /** An endpoint class we are exposing */
 @Api(
-  name = "myApi",
+  name = "jokesApi",
   version = "v1",
   namespace = @ApiNamespace(
     ownerDomain = "jokes.gcm.android.udacity.edu",
