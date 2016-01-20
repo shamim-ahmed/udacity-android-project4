@@ -6,8 +6,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import edu.udacity.android.android_joke_activity.JokeDisplayActivity;
-import edu.udacity.model.Joke;
-import edu.udacity.provider.jokes.JokeProvider;
 
 public class FetchJokeTask extends AsyncTask<String, Void, String> {
     private static final String TAG = FetchJokeTask.class.getSimpleName();
@@ -25,10 +23,7 @@ public class FetchJokeTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        Joke joke = JokeProvider.getJoke();
-        Log.i(TAG, String.format("The retrieved joke is : %s", joke));
-
-        return joke != null ? joke.getContent() : "";
+        return "";
     }
 
     protected void onPostExecute(String result) {

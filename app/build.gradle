@@ -28,8 +28,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     // Added for AdMob
-    compile 'com.android.support:multidex:1.0.0'
-    compile project(':java-jokes')
     compile project(':android-joke-activities')
     compile project(path: ':gcm-jokes', configuration: 'android-endpoints')
     compile 'com.android.support:appcompat-v7:22.1.1'
