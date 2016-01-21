@@ -10,8 +10,6 @@ import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 
-import javax.inject.Named;
-
 import edu.udacity.model.Joke;
 import edu.udacity.provider.jokes.JokeProvider;
 
@@ -29,12 +27,7 @@ public class MyEndpoint {
 
     /** A simple endpoint method that takes a name and says Hi back */
     @ApiMethod(name = "retrieveJoke")
-    public MyBean retrieveJoke() {
-        MyBean response = new MyBean();
-        Joke joke = JokeProvider.getJoke();
-        response.setData(joke.getContent());
-
-        return response;
+    public Joke retrieveJoke() {
+        return JokeProvider.getJoke();
     }
-
 }
