@@ -23,7 +23,7 @@ import edu.udacity.provider.jokes.JokeProvider;
     packagePath=""
   )
 )
-public class JokesEndPoint {
+public class JokeEndPoint {
 
     /** A simple endpoint method that takes a name and says Hi back */
     @ApiMethod(name = "retrieveJoke")
