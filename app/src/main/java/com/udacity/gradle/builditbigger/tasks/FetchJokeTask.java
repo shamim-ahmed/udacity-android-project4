@@ -19,6 +19,7 @@ import edu.udacity.android.android_joke_activity.JokeDisplayActivity;
 public class FetchJokeTask extends AsyncTask<String, Void, String> {
     private static final String TAG = FetchJokeTask.class.getSimpleName();
     private static final String JOKE_CONTENT_ATTR_NAME = "jokeContent";
+    private static final String POST_METHOD_NAME = "POST";
 
     private final Context context;
 
@@ -32,13 +33,18 @@ public class FetchJokeTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
+        if (params.length == 0) {
+            Log.w(TAG, "no endpoint URL provided");
+            return null;
+        }
+
         BufferedReader reader = null;
         StringBuilder resultBuilder = new StringBuilder();
 
         try {
-            URL jokeServiceUrl = new URL("http://localhost:8080/_ah/api/jokesApi/v1/retrieveJoke");
+            URL jokeServiceUrl = new URL(params[0]);
             HttpURLConnection httpConnection = (HttpURLConnection) jokeServiceUrl.openConnection();
-            httpConnection.setRequestMethod("POST");
+            httpConnection.setRequestMethod(POST_METHOD_NAME);
             reader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
             String line;
 

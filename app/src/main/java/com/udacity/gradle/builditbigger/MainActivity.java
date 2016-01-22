@@ -9,6 +9,7 @@ import android.view.View;
 import com.udacity.gradle.builditbigger.tasks.FetchJokeTask;
 
 public class MainActivity extends ActionBarActivity {
+    private static final String JOKE_SERVICE_ENDPOINT_KEY = "joke.service.endpoint.url";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,10 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
+        JokeApplication application = (JokeApplication) getApplication();
+        String urlString = application.getConfigProperty(JOKE_SERVICE_ENDPOINT_KEY);
+
         FetchJokeTask task = new FetchJokeTask(this);
-        task.execute();
+        task.execute(urlString);
     }
 }
