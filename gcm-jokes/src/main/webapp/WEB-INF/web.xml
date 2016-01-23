@@ -12,6 +12,10 @@
         <servlet-name>SystemServiceServlet</servlet-name>
         <url-pattern>/_ah/spi/*</url-pattern>
     </servlet-mapping>
+    
+    <listener>
+        <listener-class>edu.udacity.android.gcm.jokes.listener.CustomContextListener</listener-class>
+    </listener>
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
