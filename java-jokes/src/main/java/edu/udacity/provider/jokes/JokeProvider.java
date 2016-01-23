@@ -73,7 +73,7 @@ public class JokeProvider {
                         String idStr = idPath.evaluate(ID_XPATH_EXPR, element);
                         String text = idPath.evaluate(CONTENT_XPATH_EXPR, element);
 
-                        if (!StringUtils.isBlank(idStr) || !StringUtils.isNumeric(idStr)) {
+                        if (StringUtils.isBlank(idStr) || !StringUtils.isNumeric(idStr)) {
                             LOGGER.log(Level.WARNING, String.format("invalid value %s found for id", idStr));
                         } else if (StringUtils.isBlank(text)) {
                             LOGGER.log(Level.WARNING, String.format("invalid value %s found for id", idStr));
@@ -111,5 +111,9 @@ public class JokeProvider {
 
     // private constructor to prevent instantiation
     private JokeProvider() {
+    }
+
+    public static void main(String... args) {
+        System.out.println(getJoke());
     }
 }
