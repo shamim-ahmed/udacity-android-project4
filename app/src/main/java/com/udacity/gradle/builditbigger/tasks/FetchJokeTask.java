@@ -1,9 +1,9 @@
 package com.udacity.gradle.builditbigger.tasks;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.udacity.gradle.builditbigger.AsyncTaskListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,22 +16,19 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import edu.udacity.android.android_joke_activity.JokeDisplayActivity;
-
 public class FetchJokeTask extends AsyncTask<String, Void, String> {
     private static final String TAG = FetchJokeTask.class.getSimpleName();
-    private static final String JOKE_CONTENT_ATTR_NAME = "jokeContent";
     private static final String POST_METHOD_NAME = "POST";
-    private static final String JSON_FIELD_NAME = "content";
+    private static final String JOKE_CONTENT_FIELD_NAME = "content";
 
-    private final Context context;
+    private final AsyncTaskListener<String> asyncListener;
 
-    public FetchJokeTask(Context context) {
-        if (context == null) {
-            throw new IllegalArgumentException("context cannot be null");
+    public FetchJokeTask(AsyncTaskListener<String> asyncListener) {
+        if (asyncListener == null) {
+            throw new IllegalArgumentException("listener cannot be null");
         }
 
-        this.context = context;
+        this.asyncListener = asyncListener;
     }
 
     @Override
@@ -77,14 +74,11 @@ public class FetchJokeTask extends AsyncTask<String, Void, String> {
 
         try {
             JSONObject jsonObject = new JSONObject(jsonStr);
-            jokeContent = jsonObject.getString(JSON_FIELD_NAME);
+            jokeContent = jsonObject.getString(JOKE_CONTENT_FIELD_NAME);
+            asyncListener.onSuccess(jokeContent);
         } catch (JSONException ex) {
             Log.e(TAG, String.format("Error while parsing JSON string : %s", jsonStr));
         }
-
-        Intent intent = new Intent(context, JokeDisplayActivity.class);
-        intent.putExtra(JOKE_CONTENT_ATTR_NAME, jokeContent);
-        context.startActivity(intent);
     }
 
     public void closeQuietly(Closeable closeable) {

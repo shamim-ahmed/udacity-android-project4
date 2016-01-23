@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,7 +9,10 @@ import android.view.View;
 
 import com.udacity.gradle.builditbigger.tasks.FetchJokeTask;
 
-public class MainActivity extends ActionBarActivity {
+import edu.udacity.android.android_joke_activity.JokeDisplayActivity;
+
+public class MainActivity extends ActionBarActivity implements AsyncTaskListener<String> {
+    private static final String JOKE_CONTENT_ATTR_NAME = "jokeContent";
     private static final String JOKE_SERVICE_ENDPOINT_KEY = "joke.service.endpoint.url";
 
     @Override
@@ -16,7 +20,6 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -46,5 +49,12 @@ public class MainActivity extends ActionBarActivity {
 
         FetchJokeTask task = new FetchJokeTask(this);
         task.execute(urlString);
+    }
+
+    @Override
+    public void onSuccess(String data) {
+        Intent intent = new Intent(this, JokeDisplayActivity.class);
+        intent.putExtra(JOKE_CONTENT_ATTR_NAME, data);
+        startActivity(intent);
     }
 }
