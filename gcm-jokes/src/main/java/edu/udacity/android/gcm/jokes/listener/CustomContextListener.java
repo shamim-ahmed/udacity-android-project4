@@ -19,7 +19,7 @@ public class CustomContextListener implements ServletContextListener {
         Joke joke = JokeProvider.getJoke();
 
         if (joke != null) {
-            logger.info(String.format("The internally retrieved joke is : %s", joke.getContent()));
+            logger.info("The internally retrieved joke is " + joke);
         } else {
             logger.warning("No joke was retrieved");
         }
