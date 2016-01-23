@@ -1,6 +1,5 @@
 package edu.udacity.provider.jokes;
 
-import org.apache.commons.lang3.StringUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -26,6 +25,7 @@ import javax.xml.xpath.XPathFactory;
 
 import edu.udacity.model.Joke;
 import edu.udacity.util.IOUtils;
+import edu.udacity.util.StringUtils;
 
 public class JokeProvider {
     private static final Logger LOGGER = Logger.getLogger(JokeProvider.class.getSimpleName());
@@ -73,7 +73,7 @@ public class JokeProvider {
                         String idStr = idPath.evaluate(ID_XPATH_EXPR, element);
                         String text = idPath.evaluate(CONTENT_XPATH_EXPR, element);
 
-                        if (StringUtils.isBlank(idStr) || !StringUtils.isNumeric(idStr)) {
+                        if (!StringUtils.isBlank(idStr) || !StringUtils.isNumeric(idStr)) {
                             LOGGER.log(Level.WARNING, String.format("invalid value %s found for id", idStr));
                         } else if (StringUtils.isBlank(text)) {
                             LOGGER.log(Level.WARNING, String.format("invalid value %s found for id", idStr));

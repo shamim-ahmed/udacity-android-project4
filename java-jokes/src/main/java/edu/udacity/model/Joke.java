@@ -1,8 +1,6 @@
 package edu.udacity.model;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import edu.udacity.util.StringUtils;
 
 public class Joke implements Comparable<Joke> {
     private final Long id;
@@ -59,9 +57,9 @@ public class Joke implements Comparable<Joke> {
 
     @Override
     public String toString() {
-        ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE);
-        builder.append("id", id).append("content", content);
+        return String.format("%s@%s{\nid: %d;\ncontent: %s\n}",
+                getClass().getCanonicalName(),
+                Integer.toHexString(hashCode()), id, content);
 
-        return builder.toString();
     }
 }
