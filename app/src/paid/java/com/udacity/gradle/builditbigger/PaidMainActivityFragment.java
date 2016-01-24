@@ -12,13 +12,9 @@ import android.view.ViewGroup;
  */
 public class PaidMainActivityFragment extends Fragment {
 
-    public PaidMainActivityFragment() {
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_main, container, false);
-        return root;
+        return inflater.inflate(R.layout.fragment_main_paid, container, false);
     }
 }
