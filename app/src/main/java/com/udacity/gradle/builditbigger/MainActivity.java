@@ -7,8 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.udacity.gradle.builditbigger.tasks.FetchJokeTask;
-
 import edu.udacity.android.android_joke_activity.JokeDisplayActivity;
 
 public class MainActivity extends ActionBarActivity implements AsyncTaskListener<String> {

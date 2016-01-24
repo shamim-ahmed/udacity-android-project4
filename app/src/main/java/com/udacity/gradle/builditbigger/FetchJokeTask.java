@@ -1,9 +1,7 @@
-package com.udacity.gradle.builditbigger.tasks;
+package com.udacity.gradle.builditbigger;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
-import com.udacity.gradle.builditbigger.AsyncTaskListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
