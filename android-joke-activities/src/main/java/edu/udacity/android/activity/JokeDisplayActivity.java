@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import edu.udacity.android.android_joke_activity.R;
 
@@ -16,7 +17,8 @@ public class JokeDisplayActivity extends AppCompatActivity {
 
         String jokeContent = getIntent().getStringExtra("jokeContent");
 
-        
+        TextView textView = (TextView) findViewById(R.id.joke_content);
+        textView.setText(jokeContent);
     }
 
     @Override
