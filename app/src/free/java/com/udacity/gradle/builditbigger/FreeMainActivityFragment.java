@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.google.android.gms.ads.InterstitialAd;
 public class FreeMainActivityFragment extends AbstractFragment {
     private InterstitialAd interstitialAd;
     private Button jokeButton;
+    private JokeApplication application;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,8 +30,11 @@ public class FreeMainActivityFragment extends AbstractFragment {
         jokeButton.setOnClickListener(this);
 
         // configure interstitial ad
-        interstitialAd = new InterstitialAd(getActivity());
-        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        Activity activity = getActivity();
+        application = (JokeApplication) activity.getApplication();
+
+        interstitialAd = new InterstitialAd(activity);
+        interstitialAd.setAdUnitId(application.getConfigProperty("unit.id"));
         interstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
@@ -65,7 +70,7 @@ public class FreeMainActivityFragment extends AbstractFragment {
     }
 
     private void requestNewInterstitial() {
-        AdRequest request = new AdRequest.Builder().addTestDevice("D55E75550E2CA393D1269880F1D4D4FC").build();
+        AdRequest request = new AdRequest.Builder().addTestDevice(application.getConfigProperty("device.id")).build();
         interstitialAd.loadAd(request);
     }
 }
