@@ -16,6 +16,7 @@ import com.google.android.gms.ads.InterstitialAd;
  */
 public class FreeMainActivityFragment extends AbstractFragment {
     private InterstitialAd interstitialAd;
+    private Button jokeButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,7 +24,7 @@ public class FreeMainActivityFragment extends AbstractFragment {
         View root = inflater.inflate(R.layout.fragment_main_free, container, false);
 
         // register click listener for the joke button
-        Button jokeButton = (Button) root.findViewById(R.id.joke_button);
+        jokeButton = (Button) root.findViewById(R.id.joke_button);
         jokeButton.setOnClickListener(this);
 
         // configure interstitial ad
@@ -53,7 +54,14 @@ public class FreeMainActivityFragment extends AbstractFragment {
 
     @Override
     public void onClick(View v) {
+        jokeButton.setEnabled(false);
         interstitialAd.show();
+    }
+
+    @Override
+    public void onSuccess(String data) {
+        super.onSuccess(data);
+        jokeButton.setEnabled(true);
     }
 
     private void requestNewInterstitial() {
