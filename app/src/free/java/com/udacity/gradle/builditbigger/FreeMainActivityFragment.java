@@ -18,7 +18,6 @@ import com.google.android.gms.ads.InterstitialAd;
 public class FreeMainActivityFragment extends AbstractFragment {
     private InterstitialAd interstitialAd;
     private Button jokeButton;
-    private JokeApplication application;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +30,6 @@ public class FreeMainActivityFragment extends AbstractFragment {
 
         // configure interstitial ad
         Activity activity = getActivity();
-        application = (JokeApplication) activity.getApplication();
         String unitId = activity.getString(R.string.banner_ad_unit_id);
 
         interstitialAd = new InterstitialAd(activity);
