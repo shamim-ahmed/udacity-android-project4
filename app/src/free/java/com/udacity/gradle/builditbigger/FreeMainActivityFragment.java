@@ -32,9 +32,10 @@ public class FreeMainActivityFragment extends AbstractFragment {
         // configure interstitial ad
         Activity activity = getActivity();
         application = (JokeApplication) activity.getApplication();
+        String unitId = activity.getString(R.string.banner_ad_unit_id);
 
         interstitialAd = new InterstitialAd(activity);
-        interstitialAd.setAdUnitId(application.getConfigProperty("unit.id"));
+        interstitialAd.setAdUnitId(unitId);
         interstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
@@ -70,7 +71,8 @@ public class FreeMainActivityFragment extends AbstractFragment {
     }
 
     private void requestNewInterstitial() {
-        AdRequest request = new AdRequest.Builder().addTestDevice(application.getConfigProperty("device.id")).build();
+        String deviceId = getActivity().getString(R.string.device_id);
+        AdRequest request = new AdRequest.Builder().addTestDevice(deviceId).build();
         interstitialAd.loadAd(request);
     }
 }
