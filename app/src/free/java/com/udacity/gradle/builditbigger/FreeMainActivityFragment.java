@@ -32,6 +32,7 @@ public class FreeMainActivityFragment extends AbstractFragment {
         interstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
+                startFetchJokeTask();
                 requestNewInterstitial();
             }
         });
@@ -52,7 +53,6 @@ public class FreeMainActivityFragment extends AbstractFragment {
 
     @Override
     public void onClick(View v) {
-        super.onClick(v);
         interstitialAd.show();
     }
 

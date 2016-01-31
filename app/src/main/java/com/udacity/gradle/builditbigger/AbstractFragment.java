@@ -13,6 +13,10 @@ public abstract class AbstractFragment extends Fragment implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+        startFetchJokeTask();
+    }
+
+    protected void startFetchJokeTask() {
         Activity activity = getActivity();
         JokeApplication application = (JokeApplication) activity.getApplication();
         String urlString = application.getConfigProperty(JOKE_SERVICE_ENDPOINT_KEY);
