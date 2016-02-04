@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -17,6 +18,7 @@ import com.google.android.gms.ads.InterstitialAd;
  */
 public class FreeMainActivityFragment extends AbstractFragment {
     private InterstitialAd interstitialAd;
+    private ProgressBar progressBar;
     private Button jokeButton;
 
     @Override
@@ -28,6 +30,8 @@ public class FreeMainActivityFragment extends AbstractFragment {
         jokeButton = (Button) root.findViewById(R.id.joke_button);
         jokeButton.setOnClickListener(this);
 
+        progressBar = (ProgressBar) root.findViewById(R.id.progress_bar);
+
         // configure interstitial ad
         Activity activity = getActivity();
         String unitId = activity.getString(R.string.banner_ad_unit_id);
@@ -38,6 +42,7 @@ public class FreeMainActivityFragment extends AbstractFragment {
             @Override
             public void onAdClosed() {
                 startFetchJokeTask();
+                progressBar.setVisibility(View.VISIBLE);
                 requestNewInterstitial();
             }
         });
@@ -66,6 +71,7 @@ public class FreeMainActivityFragment extends AbstractFragment {
     public void onSuccess(String data) {
         super.onSuccess(data);
         jokeButton.setEnabled(true);
+        progressBar.setVisibility(View.GONE);
     }
 
     private void requestNewInterstitial() {
