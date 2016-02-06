@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package edu.udacity.gradle.builditbigger;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,7 +13,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
-import com.udacity.gradle.builditbigger.util.Constants;
+import edu.udacity.gradle.builditbigger.AbstractFragment;
+import edu.udacity.gradle.builditbigger.util.Constants;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -61,7 +62,7 @@ public class FreeMainActivityFragment extends AbstractFragment {
                 .addTestDevice(deviceId)
                 .build();
         mAdView.loadAd(adRequest);
-        
+
         return root;
     }
 

@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger.util;
+package edu.udacity.gradle.builditbigger.util;
 
 public class Constants {
     public static final int JOKE_FETCH_MAX_DELAY = 10000;

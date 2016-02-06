@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package edu.udacity.gradle.builditbigger;
 
 import android.os.AsyncTask;
 import android.util.Log;

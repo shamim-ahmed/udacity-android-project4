@@ -1,9 +1,11 @@
-package com.udacity.gradle.builditbigger;
+package edu.udacity.gradle.builditbigger;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import edu.udacity.gradle.builditbigger.R;
 
 public class MainActivity extends ActionBarActivity {
 

@@ -1,9 +1,9 @@
-package com.udacity.gradle.builditbigger.tasks;
+package edu.udacity.gradle.builditbigger.tasks;
 
 import android.test.InstrumentationTestCase;
 
-import com.udacity.gradle.builditbigger.AsyncTaskListener;
-import com.udacity.gradle.builditbigger.FetchJokeTask;
+import edu.udacity.gradle.builditbigger.AsyncTaskListener;
+import edu.udacity.gradle.builditbigger.FetchJokeTask;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;

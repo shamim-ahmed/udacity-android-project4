@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package edu.udacity.gradle.builditbigger;
 
 import android.support.multidex.MultiDexApplication;
 import android.util.Log;

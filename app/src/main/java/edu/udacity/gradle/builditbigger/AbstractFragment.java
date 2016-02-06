@@ -1,9 +1,11 @@
-package com.udacity.gradle.builditbigger;
+package edu.udacity.gradle.builditbigger;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.view.View;
+
+import edu.udacity.gradle.builditbigger.R;
 
 import edu.udacity.android.android_joke_activity.JokeDisplayActivity;
 
