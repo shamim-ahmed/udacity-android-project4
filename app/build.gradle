@@ -50,3 +50,17 @@ dependencies {
     freeCompile 'com.google.android.gms:play-services-gcm:7.8.0'
     freeCompile 'com.google.android.gms:play-services-ads:7.8.0'
 }
+
+task customTask(type:GradleBuild, dependsOn: ":gcm-jokes:appengineRun") {
+    project(":gcm-jokes").afterEvaluate {gcmJokes ->
+        gcmJokes.extensions.appengine.daemon = true
+    }
+
+    tasks = [":app:test"]
+
+    doLast {
+       println "The custom task executed successfully !"
+    }
+}
+
+customTask.finalizedBy(":gcm-jokes:appengineStop")
