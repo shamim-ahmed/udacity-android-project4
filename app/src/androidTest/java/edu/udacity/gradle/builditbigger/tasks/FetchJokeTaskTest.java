@@ -9,7 +9,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class FetchJokeTaskTest extends InstrumentationTestCase {
-    private static final String TEST_SERVICE_URL = "https://gcm-jokes.appspot.com/_ah/api/jokesApi/v1/retrieveJoke";
+    private static final String DEFAULT_SERVICE_URL = "https://gcm-jokes.appspot.com/_ah/api/jokesApi/v1/retrieveJoke";
+    private static final int DELAY_IN_SECONDS = 15;
     private boolean called;
 
     @Override
@@ -19,6 +20,7 @@ public class FetchJokeTaskTest extends InstrumentationTestCase {
     }
 
     public void testSuccessfulFetch() throws Throwable {
+        final String serviceUrl = System.getProperty("service.endpoint.url", DEFAULT_SERVICE_URL);
         final CountDownLatch latch = new CountDownLatch(1);
 
         runTestOnUiThread(new Runnable() {
@@ -33,11 +35,11 @@ public class FetchJokeTaskTest extends InstrumentationTestCase {
                     }
                 });
 
-                task.execute(TEST_SERVICE_URL);
+                task.execute(serviceUrl);
             }
         });
 
-        latch.await(10, TimeUnit.SECONDS);
+        latch.await(DELAY_IN_SECONDS, TimeUnit.SECONDS);
         assertTrue(called);
     }
 }
