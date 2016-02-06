@@ -5,7 +5,7 @@ android {
         udacityConfig {
             keyAlias 'edu.udacity.android'
             keyPassword 'udacity'
-            storeFile file('/home/shamim/codes/android-keystore/udacity.jks')
+            storeFile file('keystore/udacity.jks')
             storePassword 'udacity'
         }
     }
