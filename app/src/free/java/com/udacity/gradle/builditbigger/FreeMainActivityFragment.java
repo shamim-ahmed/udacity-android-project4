@@ -13,6 +13,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
+import com.udacity.gradle.builditbigger.util.Constants;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -34,10 +36,11 @@ public class FreeMainActivityFragment extends AbstractFragment {
 
         // configure interstitial ad
         Activity activity = getActivity();
-        String unitId = activity.getString(R.string.banner_ad_unit_id);
+        String bannerAdUnitId = activity.getString(R.string.banner_ad_unit_id);
+        String deviceId = activity.getString(R.string.device_id);
 
         interstitialAd = new InterstitialAd(activity);
-        interstitialAd.setAdUnitId(unitId);
+        interstitialAd.setAdUnitId(bannerAdUnitId);
         interstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
@@ -55,15 +58,25 @@ public class FreeMainActivityFragment extends AbstractFragment {
         // get test ads on a physical device. e.g.
         // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
         AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice(deviceId)
                 .build();
         mAdView.loadAd(adRequest);
+        
         return root;
     }
 
     @Override
     public void onClick(View v) {
         jokeButton.setEnabled(false);
+        jokeButton.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (!jokeButton.isEnabled()) {
+                    jokeButton.setEnabled(true);
+                }
+            }
+        }, Constants.JOKE_FETCH_MAX_DELAY);
+
         interstitialAd.show();
     }
 
