@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -67,12 +68,14 @@ public class FreeMainActivityFragment extends AbstractFragment {
 
     @Override
     public void onClick(View v) {
+        final Activity activity = getActivity();
         jokeButton.setEnabled(false);
         jokeButton.postDelayed(new Runnable() {
             @Override
             public void run() {
                 if (!jokeButton.isEnabled()) {
                     jokeButton.setEnabled(true);
+                    Toast.makeText(activity, activity.getString(R.string.retry_message), Toast.LENGTH_LONG).show();
                 }
             }
         }, Constants.JOKE_FETCH_MAX_DELAY);
