@@ -1,15 +1,17 @@
 package edu.udacity.gradle.builditbigger.tasks;
 
+import android.content.res.AssetManager;
 import android.test.InstrumentationTestCase;
 
 import edu.udacity.gradle.builditbigger.AsyncTaskListener;
 import edu.udacity.gradle.builditbigger.FetchJokeTask;
 
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class FetchJokeTaskTest extends InstrumentationTestCase {
-    private static final String DEFAULT_SERVICE_URL = "https://gcm-jokes.appspot.com/_ah/api/jokesApi/v1/retrieveJoke";
     private static final int DELAY_IN_SECONDS = 15;
     private boolean called;
 
@@ -20,7 +22,21 @@ public class FetchJokeTaskTest extends InstrumentationTestCase {
     }
 
     public void testSuccessfulFetch() throws Throwable {
-        final String serviceUrl = System.getProperty("service.endpoint.url", DEFAULT_SERVICE_URL);
+        AssetManager assetManager = getInstrumentation().getContext().getAssets();
+        InputStream in = assetManager.open("test.properties");
+        Properties properties = new Properties();
+        properties.load(in);
+
+        String remoteUrl = properties.getProperty("remote.service.endpoint.url");
+        String localUrl = properties.getProperty("local.service.endpoint.url");
+        final String targetUrl;
+
+        if (!isBlank(localUrl)) {
+            targetUrl = localUrl;
+        } else {
+            targetUrl = remoteUrl;
+        }
+
         final CountDownLatch latch = new CountDownLatch(1);
 
         runTestOnUiThread(new Runnable() {
@@ -35,11 +51,15 @@ public class FetchJokeTaskTest extends InstrumentationTestCase {
                     }
                 });
 
-                task.execute(serviceUrl);
+                task.execute(targetUrl);
             }
         });
 
         latch.await(DELAY_IN_SECONDS, TimeUnit.SECONDS);
         assertTrue(called);
+    }
+
+    private boolean isBlank(String str) {
+        return str == null || str.trim().equals("");
     }
 }
