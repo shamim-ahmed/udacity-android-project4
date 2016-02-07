@@ -13,12 +13,12 @@ import java.util.concurrent.TimeUnit;
 
 public class FetchJokeTaskTest extends InstrumentationTestCase {
     private static final int DELAY_IN_SECONDS = 15;
-    private boolean called;
+    private boolean validated;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        called = false;
+        validated = false;
     }
 
     public void testSuccessfulFetch() throws Throwable {
@@ -45,9 +45,8 @@ public class FetchJokeTaskTest extends InstrumentationTestCase {
                 FetchJokeTask task = new FetchJokeTask(new AsyncTaskListener<String>() {
                     @Override
                     public void onSuccess(String data) {
-                        assertNotNull(data);
-                        assertTrue(!data.trim().equals(""));
-                        called = true;
+                        assertTrue(!isBlank(data));
+                        validated = true;
                     }
                 });
 
@@ -56,7 +55,7 @@ public class FetchJokeTaskTest extends InstrumentationTestCase {
         });
 
         latch.await(DELAY_IN_SECONDS, TimeUnit.SECONDS);
-        assertTrue(called);
+        assertTrue(validated);
     }
 
     private boolean isBlank(String str) {
