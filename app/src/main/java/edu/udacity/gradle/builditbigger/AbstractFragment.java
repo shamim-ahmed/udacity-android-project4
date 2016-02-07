@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import edu.udacity.android.android_joke_activity.JokeDisplayActivity;
+import edu.udacity.android.activity.JokeDisplayActivity;
 
 public abstract class AbstractFragment extends Fragment implements View.OnClickListener, AsyncTaskListener<String> {
     public static final String JOKE_CONTENT_ATTR_NAME = "jokeContent";

@@ -6,8 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import edu.udacity.android.android_joke_activity.R;
-
 public class JokeDisplayActivity extends AppCompatActivity {
 
     @Override
