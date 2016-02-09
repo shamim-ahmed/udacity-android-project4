@@ -1,4 +1,4 @@
-package edu.udacity.android.android_joke_activity;
+package edu.udacity.android.activity;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

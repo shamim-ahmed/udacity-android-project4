@@ -12,7 +12,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class FetchJokeTaskTest extends InstrumentationTestCase {
-    private static final int DELAY_IN_SECONDS = 15;
+    private static final int DELAY_IN_SECONDS = 20;
     private boolean validated;
 
     @Override
